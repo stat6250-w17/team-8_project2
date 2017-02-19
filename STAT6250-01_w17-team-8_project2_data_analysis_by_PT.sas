@@ -49,6 +49,10 @@ of lunsford.
 Methodology: 
 Largest No. of frequency will show the most 
 
+proc freq data=lunsford_analytic_file;
+   tables FavBotWatBrand ;
+run;
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
