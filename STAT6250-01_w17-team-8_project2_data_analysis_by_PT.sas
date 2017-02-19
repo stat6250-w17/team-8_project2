@@ -50,7 +50,7 @@ Methodology:
 Largest No. of frequency will show the most 
 ;
 
-proc freq data=lunsford_analytic_file;
+proc freq data=lunsford_analysis_file;
    tables FavBotWatBrand ;
 run;
 
@@ -64,6 +64,13 @@ run;
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford and 
 to the column “Gender” from lunsford.
 Methodology: 
+;
+
+proc freq data=lunsford_analysis_file
+   tables Gender*FavBotWatBrand*preference/ crosslist;
+   format Gender Fv.pref htfmt.;
+run;
+
 
 
 
@@ -71,8 +78,13 @@ Methodology:
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-[Research Question 3] what is the most favorite brand for men?
+[Research Question 3] what is the 2ndmost favorite brand for men?
 [Rationale] This question can be compare to both above questions and we can see 
 if second preference for men is match with 1st preference of women!
 
 Methodology: 
+;
+proc freq data=lunsford_analysis_file
+   tables Gender*FavBotWatBrand*second/ crosslist;
+   format Gender Fv.second htfmt.;
+run;
