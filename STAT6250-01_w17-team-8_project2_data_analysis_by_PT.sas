@@ -66,7 +66,7 @@ to the column “Gender” from lunsford.
 Methodology: 
 ;
 
-proc freq data=lunsford_analysis_file
+proc freq data=lunsford_analysis_file;
    tables Gender*FavBotWatBrand*preference/ crosslist;
    format Gender Fv.pref htfmt.;
 run;
@@ -84,7 +84,7 @@ if second preference for men is match with 1st preference of women!
 
 Methodology: 
 ;
-proc freq data=lunsford_analysis_file
+proc freq data=lunsford_analysis_file;
    tables Gender*FavBotWatBrand*second/ crosslist;
    format Gender Fv.second htfmt.;
 run;
