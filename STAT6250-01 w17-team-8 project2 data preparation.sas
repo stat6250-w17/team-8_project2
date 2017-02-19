@@ -84,19 +84,19 @@ https://github.com/ptabatabaeitabrizi-stat6250/Hello-world/blob/master/lunsford2
 
 ;
 %let inputDataset1Type = XLS;
-%let inputDataset1DSN = _raw;
+%let inputDataset1DSN = lunsford_raw;
 
 %let inputDataset2URL =
 
 ;
 %let inputDataset2Type = XLS;
-%let inputDataset2DSN =_raw;;
+%let inputDataset2DSN =lunsford2_raw;;
 
 %let inputDataset3URL =
 
 ;
 %let inputDataset3Type = XLS;
-%let inputDataset3DSN = _raw;;
+%let inputDataset3DSN = Water_PH_Dataset_raw;
 
 %let inputDataset4URL =
 
