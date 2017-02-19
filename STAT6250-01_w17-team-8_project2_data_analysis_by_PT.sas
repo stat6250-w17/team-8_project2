@@ -48,6 +48,7 @@ Note: This will get information from  the column "FavBotWatBrand” from the dat
 of lunsford.
 Methodology: 
 Largest No. of frequency will show the most 
+;
 
 proc freq data=lunsford_analytic_file;
    tables FavBotWatBrand ;
