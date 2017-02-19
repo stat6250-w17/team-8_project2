@@ -87,13 +87,13 @@ https://github.com/stat6250/team-8_project2/blob/master/data/lunsford.xls?raw=tr
 %let inputDataset1DSN = lunsford_raw;
 
 %let inputDataset2URL =
-https://github.com/stat6250/team-8_project2/blob/master/data/lunsford2.xls
+https://github.com/stat6250/team-8_project2/blob/master/data/lunsford2.xls?raw=true
 ;
 %let inputDataset2Type = XLS;
 %let inputDataset2DSN =lunsford2_raw;;
 
 %let inputDataset3URL =
-https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xls
+https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xls?raw=true
 ;
 %let inputDataset3Type = XLS;
 %let inputDataset3DSN = Water_PH_Dataset_raw;
