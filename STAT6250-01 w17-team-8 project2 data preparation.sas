@@ -81,28 +81,28 @@ https://github.com/ptabatabaeitabrizi-stat6250/Hello-world/blob/master/lunsford2
 --
 * setup environmental parameters;
 %let inputDataset1URL =
-
+https://github.com/stat6250/team-8_project2/blob/master/data/lunsford.xls?raw=true
 ;
 %let inputDataset1Type = XLS;
 %let inputDataset1DSN = lunsford_raw;
 
 %let inputDataset2URL =
-
+https://github.com/stat6250/team-8_project2/blob/master/data/lunsford2.xls
 ;
 %let inputDataset2Type = XLS;
 %let inputDataset2DSN =lunsford2_raw;;
 
 %let inputDataset3URL =
-
+https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xls
 ;
 %let inputDataset3Type = XLS;
 %let inputDataset3DSN = Water_PH_Dataset_raw;
 
-%let inputDataset4URL =
+# %let inputDataset4URL =
 
 ;
-%let inputDataset4Type = XLS;
-%let inputDataset4DSN = _raw;
+# %let inputDataset4Type = XLS;
+# %let inputDataset4DSN = _raw;
 
 
 * load raw datasets over the wire, if they doesn't already exist;
@@ -150,8 +150,8 @@ https://github.com/ptabatabaeitabrizi-stat6250/Hello-world/blob/master/lunsford2
     &inputDataset3URL.,
     &inputDataset3Type.
 )
-%loadDataIfNotAlreadyAvailable(
-    &inputDataset4DSN.,
-    &inputDataset4URL.,
-    &inputDataset4Type.
-)
+# %loadDataIfNotAlreadyAvailable(
+#    &inputDataset4DSN.,
+#    &inputDataset4URL.,
+#    &inputDataset4Type.
+# )
