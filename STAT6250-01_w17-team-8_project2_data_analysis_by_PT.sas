@@ -43,11 +43,11 @@ directory, if using Windows;
 *******************************************************************************;
 *
 [Research Question 1] What is the most favorite brand overall?
-[Rationale] This question is useful to see which brand has better taste for people?
-Note: This will get information from  the column "FavBotWatBrand” from the dataset
+[Rationale]This question is useful to see which brand has best taste for people?
+Note: This will get information from the column "FavBotWatBrand” from the dataset
 of lunsford.
 Methodology: 
-Largest No. of frequency will show the most 
+Largest No. of frequency will show the most favourite brand 
 ;
 
 proc freq data=lunsford_analysis_file;
@@ -60,10 +60,12 @@ run;
 *******************************************************************************;
 *
 [Research Question 2] What is the most favorite brand for female?
-[Rationale] This question is showing the difference between female and male preference
+[Rationale]This question is showing difference between female& male preference
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford and 
 to the column “Gender” from lunsford.
 Methodology: 
+Proc Freq will help me to see the ratio of barnds and with crosslist I can combine
+itto the  gender
 ;
 
 proc freq data=lunsford_analysis_file;
@@ -83,6 +85,7 @@ run;
 if second preference for men is match with 1st preference of women!
 
 Methodology: 
+In this step I can combine the gender and second preference of favourite brand 
 ;
 proc freq data=lunsford_analysis_file;
    tables Gender*FavBotWatBrand*second/ crosslist;
