@@ -45,7 +45,7 @@ directory, if using Windows;
 [Research Question 1] What is the most favorite brand overall?
 [Rationale]This question is useful to see which brand has best taste for people?
 Note: This will get information from the column "FavBotWatBrand” from the dataset
-of lunsford.
+of lunsford and lunsford2.
 Methodology: 
 Largest No. of frequency will show the most favourite brand 
 ;
@@ -62,7 +62,7 @@ run;
 [Research Question 2] What is the most favorite brand for female?
 [Rationale]This question is showing difference between female& male preference
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford and 
-to the column “Gender” from lunsford.
+to the column “Gender” from lunsford and lunsford2.
 Methodology: 
 Proc Freq will help me to see the ratio of barnds and with crosslist I can combine
 itto the  gender
