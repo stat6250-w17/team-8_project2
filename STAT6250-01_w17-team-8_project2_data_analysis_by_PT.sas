@@ -50,7 +50,7 @@ Methodology:
 Largest No. of frequency will show the most favourite brand 
 ;
 
-proc freq data=lunsford_analysis_file;
+proc freq data=lunsford_analytic_file;
    tables FavBotWatBrand ;
 run;
 
@@ -68,7 +68,7 @@ Proc Freq will help me to see the ratio of barnds and with crosslist I can combi
 itto the  gender
 ;
 
-proc freq data=lunsford_analysis_file;
+proc freq data=lunsford_analytic_file;
    tables Gender*FavBotWatBrand*preference/ crosslist;
    format Gender Fv.pref htfmt.;
 run;
@@ -87,7 +87,8 @@ if second preference for men is match with 1st preference of women!
 Methodology: 
 In this step I can combine the gender and second preference of favourite brand 
 ;
-proc freq data=lunsford_analysis_file;
+proc freq data=lunsford_analytic_file;
    tables Gender*FavBotWatBrand*second/ crosslist;
    format Gender Fv.second htfmt.;
 run;
+
