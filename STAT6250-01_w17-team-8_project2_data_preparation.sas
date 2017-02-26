@@ -63,6 +63,7 @@ http://filebin.ca/3C6MDo9ISFSP/Water_PH_Dataset.xlsx(sheet1)
 [Unique ID Schema] Water_OBS
 
 --
+
 * setup environmental parameters;
 %let inputDataset1URL =
 https://github.com/stat6250/team-8_project2/blob/master/data/lunsford.xls?raw=true
@@ -77,7 +78,7 @@ https://github.com/stat6250/team-8_project2/blob/master/data/lunsford2.xls?raw=t
 %let inputDataset2DSN =lunsford2_raw;;
 
 %let inputDataset3URL =
-https://github.com/bfu3-stat6250/hello-world/blob/master/Water_PH_Dataset.xls?raw=true
+https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xls?raw=true
 
 ;
 %let inputDataset3Type = XLS;
@@ -132,7 +133,7 @@ https://github.com/bfu3-stat6250/hello-world/blob/master/Water_PH_Dataset.xls?ra
 
 
 * sort and check raw datasets for duplicates with respect to their unique ids,
-  removing blank rows, if needed;
+removing blank rows, if needed;
 proc sort
         nodupkey
         data=lunsford_raw
@@ -166,10 +167,15 @@ proc sort
     ;
 run;
 
-* combine lunsford and lunsford2 data vertically, combine composite key values into a primary key
-  key, and compute year-over-year (y-o-y) change in Percent_Eligible_FRPM_K12,
-  retaining all AY2014-15 fields and y-o-y Percent_Eligible_FRPM_K12 change;
+* combine lunsford and lunsford2 data vertically;
 data lunsford_combined;
+    retain
+        OBS
+        Gender
+        Age
+        UsuallyDrink
+        FavBotWatBrand
+    ;
     set
         lunsford_raw_sorted
         lunsford2_raw_sorted
@@ -187,26 +193,61 @@ proc sort
     ;
 run;
 
-
-
-data lunsford_analytic_file;
-    merge lunsford_combined_sorted (in=lun)
+* build analytic dataset from raw datasets with the least number of columns and
+minimal cleaning/transformation needed to address research questions in
+corresponding data-analysis files;
+data lunsford_analytic_tmp;
+    retain
+	    OBS
+        Gender
+        Age
+        UsuallyDrink
+        FavBotWatBrand
+        pH
+        Water_Type
+        Ideal_pH_level
+        ORP
+        Water_Type_2
+    ;
+    keep
+	    OBS
+        Gender
+        Age
+        UsuallyDrink
+        FavBotWatBrand
+        pH
+        Water_Type
+        Ideal_pH_level
+        ORP
+        Water_Type_2
+    ;
+	merge lunsford_combined_sorted (in=lun)
           Water_PH_Dataset_raw_sorted (rename=(Brand=FavBotWatBrand)in=wph )
     ;
 	by
           FavBotWatBrand
     ;
-
+    
 run;
 
-proc print data = lunsford_analytic_file;
-     where OBS is not null;
+proc sort
+    data=lunsford_analytic_tmp
+    out=lunsford_analytic_file
+    ;
+    by 
+        FavBotWatBrand
+    ;
+    where OBS is not null;
 run;
 
-  /*
-    if 
-          lun = 1 and wph =1
-	;
-  */
+* create copy of analytic file sorted by OBS for use in data analysis;
+proc sort
+    data=lunsford_analytic_file
+    out=lunsford_analytic_file_OBS_sort
+    ;
+    by 
+        OBS
+    ;
+ run;
 
 
