@@ -63,23 +63,7 @@ http://filebin.ca/3C6MDo9ISFSP/Water_PH_Dataset.xlsx(sheet1)
 [Unique ID Schema] Water_OBS
 
 --
-[Dataset 4 Name] 
 
-[Dataset Description] 
-
-[Experimental d
-
-[Number of Observations]                   
-
-[Number of Features] 
-
-[Data Source] )
-
-[Data Dictionary]
-
-[Unique ID Schema] 
-
---
 * setup environmental parameters;
 %let inputDataset1URL =
 https://github.com/stat6250/team-8_project2/blob/master/data/lunsford.xls?raw=true
@@ -149,7 +133,7 @@ https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xl
 
 
 * sort and check raw datasets for duplicates with respect to their unique ids,
-  removing blank rows, if needed;
+removing blank rows, if needed;
 proc sort
         nodupkey
         data=lunsford_raw
@@ -184,7 +168,6 @@ proc sort
 run;
 
 * combine lunsford and lunsford2 data vertically;
-
 data lunsford_combined;
     retain
         OBS
@@ -213,7 +196,6 @@ run;
 * build analytic dataset from raw datasets with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
 corresponding data-analysis files;
-
 data lunsford_analytic_tmp;
     retain
 	    OBS
