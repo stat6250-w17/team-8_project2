@@ -173,8 +173,11 @@ data lunsford_combined;
         OBS
         Gender
         Age
+        Class
         UsuallyDrink
         FavBotWatBrand
+        First
+        Second
     ;
     set
         lunsford_raw_sorted
@@ -198,11 +201,14 @@ minimal cleaning/transformation needed to address research questions in
 corresponding data-analysis files;
 data lunsford_analytic_tmp;
     retain
-	    OBS
+	OBS
         Gender
         Age
+        Class
         UsuallyDrink
         FavBotWatBrand
+        First
+        Second
         pH
         Water_Type
         Ideal_pH_level
@@ -210,21 +216,24 @@ data lunsford_analytic_tmp;
         Water_Type_2
     ;
     keep
-	    OBS
+	OBS
         Gender
         Age
+        Class
         UsuallyDrink
         FavBotWatBrand
+        First
+        Second
         pH
         Water_Type
         Ideal_pH_level
         ORP
         Water_Type_2
     ;
-	merge lunsford_combined_sorted (in=lun)
+    merge lunsford_combined_sorted (in=lun)
           Water_PH_Dataset_raw_sorted (rename=(Brand=FavBotWatBrand)in=wph )
     ;
-	by
+    by
           FavBotWatBrand
     ;
     
