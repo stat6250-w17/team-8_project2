@@ -120,7 +120,7 @@ When combining lunsford with Water_PH_Dataset during data preparation, the
 Match-merging jointed these two dataset by the FavBotWatBrand, so the 
 Water_Type_2 info will be avaible in the now joined table.  We will use proc 
 freq for the variable Water_Type_2, if the freq is about the same as of 
-water types, we can say the test is fair; otherwise, we can assume the test is 
+water types, we can say the test is fair, otherwise, we can assume the test is 
 bias. 
 
 proc freq data= lunsford_analytic_file;
