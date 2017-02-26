@@ -94,3 +94,6 @@ proc freq data=lunsford_combined_sorted;
    tables Gender*Second/ crosslist;
 run;
 
+
+
+
