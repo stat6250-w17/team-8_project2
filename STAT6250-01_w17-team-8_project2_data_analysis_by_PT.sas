@@ -50,7 +50,7 @@ Methodology:
 Largest No. of frequency will show the most favourite brand 
 ;
 
-proc freq data=lunsford_analytic_file;
+proc freq data=lunsford_combined_sorted;
    tables FavBotWatBrand ;
 run;
 
@@ -70,7 +70,7 @@ base on the gender and the difference may show the difference taste for men
 and women so I will compare the second fav. in next question.
 ;
 
-proc freq data=lunsford_analytic_file;
+proc freq data=lunsford_combined_sorted;
    tables Gender*FavBotWatBrand*preference/ crosslist;
    format Gender Fv.pref htfmt.;
 run;
@@ -91,7 +91,7 @@ In this step I can combine the gender and second preference of favourite brand
 and compare tow gender second preference. It may shows the differenace taste
 base on gender if  second preference are differ.
 ;
-proc freq data=lunsford_analytic_file;
+proc freq data=lunsford_combined_sorted;
    tables Gender*FavBotWatBrand*second/ crosslist;
    format Gender Fv.second htfmt.;
 run;
