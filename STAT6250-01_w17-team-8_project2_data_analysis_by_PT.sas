@@ -71,8 +71,7 @@ and women so I will compare the second fav. in next question.
 ;
 
 proc freq data=lunsford_combined_sorted;
-   tables Gender*FavBotWatBrand*Preference/ crosslist;
-   format Gender Fv.pref htfmt.;
+   tables Gender*First/ crosslist;
 run;
 
 
@@ -92,7 +91,6 @@ and compare tow gender second preference. It may shows the differenace taste
 base on gender if  second preference are differ.
 ;
 proc freq data=lunsford_combined_sorted;
-   tables Gender*FavBotWatBrand*Second/ crosslist;
-   format Gender Fv.second htfmt.;
+   tables Gender*Second/ crosslist;
 run;
 
