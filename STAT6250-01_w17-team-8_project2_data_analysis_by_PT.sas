@@ -61,11 +61,13 @@ run;
 *
 [Research Question 2] What is the most favorite brand for female?
 [Rationale]This question is showing difference between female& male preference
-Note: This compares the column "FavBotWatBrand” from the dataset of lunsford and 
+Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
 to the column “Gender” from lunsford and lunsford2.
 Methodology: 
-Proc Freq will help me to see the ratio of barnds and with crosslist I can combine
-itto the  gender
+Proc Freq will help me to see the ratio of barnds and with crosslist I can 
+combine it to the  gender, with this code I can even compare the preferance
+base on the gender and the difference may show the difference taste for men 
+and women so I will compare the second fav. in next question.
 ;
 
 proc freq data=lunsford_analytic_file;
@@ -85,7 +87,9 @@ run;
 if second preference for men is match with 1st preference of women!
 
 Methodology: 
-In this step I can combine the gender and second preference of favourite brand 
+In this step I can combine the gender and second preference of favourite brand
+and compare tow gender second preference. It may shows the differenace taste
+base on gender if  second preference are differ.
 ;
 proc freq data=lunsford_analytic_file;
    tables Gender*FavBotWatBrand*second/ crosslist;
