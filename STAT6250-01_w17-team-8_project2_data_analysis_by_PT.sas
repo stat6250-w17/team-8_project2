@@ -83,7 +83,7 @@ run;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 *
-[Research Question 3] what is the 2ndmost favorite brand for men?
+[Research Question 3]what is the 2ndmost favorite brand for men?
 [Rationale] This question can be compare to both above questions and we can see 
 if second preference for men is match with 1st preference of women!
 
@@ -92,6 +92,8 @@ In this step I can combine the gender and second preference of favourite brand
 and compare tow gender second preference. It may shows the differenace taste
 base on gender if  second preference are differ.
 ;
+
+
 proc freq data=lunsford_combined_sorted;
    tables Gender*Second/ crosslist;
 run;
