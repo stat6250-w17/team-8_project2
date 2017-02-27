@@ -38,6 +38,8 @@ directory, if using Windows;
 %mend;
 %setup
 
+
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
@@ -53,6 +55,7 @@ Largest No. of frequency will show the most favourite brand
 proc freq data=lunsford_combined_sorted;
    tables FavBotWatBrand ;
 run;
+
 
 
 *******************************************************************************;
