@@ -44,20 +44,20 @@ directory, if using Windows;
 *******************************************************************************;
 
 title1
-"Research Question 1: What is the most favorite brand overall?
+"Research Question 1: What is the most favorite brand overall?"
 ;
 title2
-"Rationale:This question is useful to see which brand has best taste for people?
+"Rationale:This question is useful to see which brand has best taste for people?"
 
 ;
 footnote1 
-"Largest No. of frequency will show the most favourite brand 
+"Largest No. of frequency will show the most favourite brand"
 ;
 footnote2
-"Future analysis will show can show the taste by geographic
+"Future analysis will show can show the taste by geographic"
 ;
 footnote3
-"However the age may affect the result
+"However the age may affect the result"
 ;
 *
 Note:
@@ -80,19 +80,19 @@ footnote;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1
-"Research Question 2: What is the most favorite brand for female & male?
+"Research Question 2: What is the most favorite brand for female & male?"
 ;
 title2
-"Rationale:This question is showing difference between female& male preference
+"Rationale:This question is showing difference between female& male preference"
 ;
 footnote1
-"it will show that female & male most favourite taste for water
+"it will show that female & male most favourite taste for water"
 ;
 footnote2
-"As we can see most attendence was from female so need to separate the favourite men taste as well
+"As we can see most attendence was from female so need to separate the favourite men taste as well"
 ;
 footnote3
-"Next analysis can show if the second favourite taste for women and men are close or not
+"Next analysis can show if the second favourite taste for women and men are close or not"
 ;
 *
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
@@ -118,20 +118,20 @@ footnote;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 title1
-"Research Question 3:what is the 2ndmost favorite brand for men?
+"Research Question 3:what is the 2ndmost favorite brand for men?"
 ;
 title2
 "Rationale] This question can be compare to both above questions and we can see 
-if second preference for men is match with 1st preference of women!
+if second preference for men is match with 1st preference of women!"
 ;
 footnote1
-"As we can see the second favourite taste is differ for male & Female
+"As we can see the second favourite taste is differ for male & Female"
 ;
 footnote2
-" However there is difference preference for two gender but they are close and it shows that their standards are close together
+" However there is difference preference for two gender but they are close and it shows that their standards are close together."
 ;
 footnote3
-"Age factor and regional may affaect the result and should consider for next step analysis 
+"Age factor and regional may affaect the result and should consider for next step analysis "
 ;
 *
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
