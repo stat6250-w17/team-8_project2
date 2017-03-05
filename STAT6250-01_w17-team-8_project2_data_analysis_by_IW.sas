@@ -43,12 +43,34 @@ directory, if using Windows;
 *******************************************************************************;
 *
 [Research Question 1] What is the frequently consumed water type in terms of bottled, tap or filtered?
-[Rationale] We can see how students prefer to drink their water.
-Methodology: 
+[Rationale] A frequency table by water type consumed would be a good initial setup 
+for further analysis on these datasets on different water types and students preferences. 
+In addition, this quetsion answers if the community prefers bottled, tap of filtered water.
+Methodology: The file lunsford_analytic was created by horizontally combining lunsford_combined 
+table with Water_PH_Dataset table based on FavBotWatBrand column. We use PROC FREQ method 
+to create a table by age and usually consumed water. Initial frequency table showed frequency for ages 
+2,9, 17 & ages above 22. Since participants in the survey were college students and the order of frequency
+for each water type was the same for all ages and limited ages, we only included 
+ages 18 through 21 for display.  
+We use PROC FORMAT to change the display of variables in UsuallyDrink column so that 
+the frequency table is easy to interpret.
 ;
-proc freq data=lunsford_analytic_file ;
-	tables Age * UsuallyDrink / nocol norow nopercent; 
+
+proc format;
+  value $UsuallyDrink 
+		'B' = 'Bottled'
+		'F' = 'Filtered'
+        	'T' = 'Tap';
+
 run;
+
+proc freq data=lunsford_analytic_file ;
+	where age IN (18,19,20,21);
+	tables Age * UsuallyDrink / nocol norow nopercent;
+	format UsuallyDrink UsuallyDrink;
+	title 'Usually Consumed Water Type by Age Group'; 
+run;
+
 
 
 
