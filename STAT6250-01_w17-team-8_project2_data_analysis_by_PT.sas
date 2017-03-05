@@ -42,10 +42,26 @@ directory, if using Windows;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+title1
+"Research Question 1: What is the most favorite brand overall?
+;
+title2
+"Rationale:This question is useful to see which brand has best taste for people?
+
+;
+footnote1 
+"Largest No. of frequency will show the most favourite brand 
+;
+footnote2
+"Future analysis will show can show the taste by geographic
+;
+footnote3
+"However the age may affect the result
+;
 *
-[Research Question 1] What is the most favorite brand overall?
-[Rationale]This question is useful to see which brand has best taste for people?
-Note:This will get information from the column "FavBotWatBrand” from the dataset
+Note:
+This will get information from the column "FavBotWatBrand” from the dataset
 of lunsford and lunsford2.
 Methodology: 
 Largest No. of frequency will show the most favourite brand 
@@ -54,15 +70,31 @@ Largest No. of frequency will show the most favourite brand
 proc freq data=lunsford_combined_sorted;
    tables FavBotWatBrand ;
 run;
+    
+title;
+footnote;
 
 
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+title1
+"Research Question 2: What is the most favorite brand for female & male?
+;
+title2
+"Rationale:This question is showing difference between female& male preference
+;
+footnote1
+"it will show that female & male most favourite taste for water
+;
+footnote2
+"As we can see most attendence was from female so need to separate the favourite men taste as well
+;
+footnote3
+"Next analysis can show if the second favourite taste for women and men are close or not
+;
 *
-[Research Question 2] What is the most favorite brand for female?
-[Rationale]This question is showing difference between female& male preference
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
 to the column “Gender” from lunsford and lunsford2.
 Methodology: 
@@ -76,17 +108,34 @@ proc freq data=lunsford_combined_sorted;
    tables Gender*First/ crosslist;
 run;
 
+title;
+footnote;
+
 
 
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-[Research Question 3]what is the 2ndmost favorite brand for men?
-[Rationale] This question can be compare to both above questions and we can see 
+title1
+"Research Question 3:what is the 2ndmost favorite brand for men?
+;
+title2
+"Rationale] This question can be compare to both above questions and we can see 
 if second preference for men is match with 1st preference of women!
-
+;
+footnote1
+"As we can see the second favourite taste is differ for male & Female
+;
+footnote2
+" However there is difference preference for two gender but they are close and it shows that their standards are close together
+;
+footnote3
+"Age factor and regional may affaect the result and should consider for next step analysis 
+;
+*
+Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
+to the column “Gender” from lunsford and lunsford2.
 Methodology: 
 In this step I can combine the gender and second preference of favourite brand
 and compare tow gender second preference. It may shows the differenace taste
@@ -97,6 +146,8 @@ base on gender if  second preference are differ.
 proc freq data=lunsford_combined_sorted;
    tables Gender*Second/ crosslist;
 run;
+title;
+footnote;
 
 
 
