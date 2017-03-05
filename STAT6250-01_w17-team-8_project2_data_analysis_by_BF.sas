@@ -38,49 +38,88 @@ directory, if using Windows;
 %mend;
 %setup
 
+
+
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+
+title1
+"Research Question: What is average favor drinking water pH level of the students for the test for female and male respectively?"
+;
+
+title2
+"Rationale: If the research finds that the pH level is about 7 for both female and male group, we can assume that the test is the fair test so that the test is somehow reasonable."
+;
+
+footnote1
+"We can find that the average pH level for female is 5.88, where pH level for male is 6.05."
+;
+
+footnote2
+"The ideal pH average result should be about 7, so we can tell that the test group are not fairly selected."
+;
+
+footnote3
+"Further more, the test group profile is skewed where the testers have 102 female and 22 male, further investigation should be performed for the skewed profile and bias group selection."
+;
+
 *
-Question: What is average favor drinking water PH level of the students for the 
-test? 
-
-Rationale: If the research finds that the PH level is about 7, we can assume 
-that the test is the fair test so that the test is somehow reasonable.
-
-Note: This compares the column "FavBotWatBrand” from the dataset of lunsford and 
-to the column “Brand” from Water_PH_Dataset.
+Note: This compares the column "FavBotWatBrand" from the dataset of lunsford and 
+to the column "Brand" from Water_PH_Dataset.
 
 Methodology: 
 
 When combining lunsford with Water_PH_Dataset during data preparation, the 
-Match-merging jointed these two dataset by the FavBotWatBrand, so the PH info 
+Match-merging jointed these two dataset by the FavBotWatBrand, so the pH info 
 will be avaible in the now joined table.  We will get the average values from 
-the variable PH.  If the value is 7 +/- 0.5 range, we can say the test is fair;
+the variable pH.  If the value is 7 +/- 0.5 range, we can say the test is fair,
 otherwise, we can assume the test is bias.  
+;
 
-proc means data=lunsford_analytic_file mean;
-    var PH;
-    If PH >7.5 or PH < 6.5
-        then text = 'water taste test is not a fair test';
-    Else
-        text = 'water taste test is a fair test';
+proc means 
+        mean
+        data=lunsford_analytic_file 
+    ;
+	class Gender;
+        var pH;
+	where pH is not missing;
+    output out=lunsford_analytic_file_temp;
 run;
+
+title;
+footnote;
 
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+
+title1
+"Research Question: Which is drinking water type distribution for the students?  Alkaline, Acidic or Regular."
+;
+
+title2
+"Rationale: We want to test if the group of students is fairly select, that is, each group should have about the same members, where they prefer Alkaline, Acidic or Regular."
+;
+
+footnote1
+"The result shows that 53 testers favor Acidic water,  16 testers favor Alkaline water and 55 testers favor Regular water."
+;
+
+footnote2
+"The ideal testers for each group should be the value between 38 and 43, so we can tell the selection of the tested is bias."
+;
+
+footnote3
+"Further analysis should focus on why the tester group has the trend of favoring the Acidic water. Is it related to the geographic location?"
+;
+
 *
-Question: Which drinking water type is the most for the students during the 
-test?  Alkaline, Acidic or Regular.
-
-Rationale: Rationale: We want to test if the group of students is fairly select, 
-that is, each group should have about the same members, where they prefer 
-Alkaline, Acidic or Regular.
-
-Note: This compares the column "FavBotWatBrand” from the dataset of lunsford and 
-to the column “Brand” from Water_PH_Dataset.
+Note: This compares the column "FavBotWatBrand" from the dataset of lunsford and 
+to the column "Brand" from Water_PH_Dataset.
 
 Methodology: 
 
@@ -88,56 +127,58 @@ When combining lunsford with Water_PH_Dataset during data preparation, the
 Match-merging jointed these two dataset by the FavBotWatBrand, so the Water_Type
 info will be avaible in the now joined table.  We will use proc freq for the 
 variable Water_Type, if the freq is about the same as of three water type, we 
-can say the test is fair; otherwise, we can assume the test is bias. 
+can say the test is fair, otherwise, we can assume the test is bias. 
+;
+
 
 proc freq data= lunsford_analytic_file;
     table Water_Type;
-    If Percent of Water_Type in (Alkaline) > 28 and 
-       Percent of Water_Type in (Alkaline) > 38 and 
-       Percent of Water_Type in (Acidic) < 28 and 
-       Percent of Water_Type in (Acidic) > 38 and 
-       Percent of Water_Type in (Regular) < 28 and 
-       Percent of Water_Type in (Regular) > 38 
-        then text = 'water taste test is not a fair test';
-    Else
-        text = 'water taste test is a fair test';
 run;
+
+title;
+footnote;
+
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-Question: Which drinking water is the most used for the student?  Tap Water, 
-Spring Water, or Distilled Water etc. 
 
-Rationale:  We want to know if the students for the test are diversified, that 
-is, some of them like tap water, some like Spring Water, etc. so we can think 
-the test is a fair test.
+title1
+"Research Question: What is the tester profile if the pH values are not documented?"
+;
+
+title2
+"Rationale:  We want to know the full profile for the students who participate the test?"
+;
+
+footnote1
+"The SAS shows that 67 testers do not favor a certain bottled water brand, 12 testers favor the bottled water from Sam's Club.  We also have one instance likes the water purchased from store, and one instance like the PAREE water brand."
+;
+
+footnote2
+"The ideal tester counts which are qualified for the missing pH values should be limited to the same amount of the testers who favor Alkaline, Acidic or Regular."
+;
+
+footnote3
+"Further more, we should take a look why 12 testers favor the bottled water from Sam's Club.  Is there a Sam's Club closing to the university?"
+;
+
+*
+Note: This compares the column "FavBotWatBrand" from the dataset of lunsford and 
+to the column "Brand" from Water_PH_Dataset.
 
 Methodology: 
 
 When combining lunsford with Water_PH_Dataset during data preparation, the 
-Match-merging jointed these two dataset by the FavBotWatBrand, so the 
-Water_Type_2 info will be avaible in the now joined table.  We will use proc 
-freq for the variable Water_Type_2, if the freq is about the same as of 
-water types, we can say the test is fair, otherwise, we can assume the test is 
-bias. 
+Match-merging jointed these two dataset by the FavBotWatBrand, so the Water_Type
+info will be avaible in the now joined table.  We will use proc freq for the 
+variable Water_Type for the condition where the pH value are not documented.
+;
 
 proc freq data= lunsford_analytic_file;
-    table Water_Type_2;
-    If Percent of Water_Type in (Tap Water) > 23 and 
-       Percent of Water_Type in (Tap Water) > 43 and 
-       Percent of Water_Type in (Spring Water) < 23 and 
-       Percent of Water_Type in (Spring Water) > 43 and 
-       Percent of Water_Type in (Purifed Water) < 23 and 
-       Percent of Water_Type in (Purifed Water) > 43 
-        then text = 'water taste test is not a fair test';
-    Else
-        text = 'water taste test is a fair test';
+    table FavBotWatBrand;
+	Where pH is missing;
 run;
 
-
-
-
-
-
+title;
+footnote;
