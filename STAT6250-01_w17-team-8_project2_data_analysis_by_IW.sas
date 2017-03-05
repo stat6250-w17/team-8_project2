@@ -85,7 +85,7 @@ footnote;
 title1
 "Research Question 2: What is the water type preference based on each class level?"
 ;
-titl2
+title2
 "Rationale: This will help to establish Chi-Squared tests to see if water type is different across class level."
 ;
 
