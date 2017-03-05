@@ -131,17 +131,20 @@ run;
 [Research Question 3] What is the top brand type preference based on gender in both experiments?
 [Rationale] This will help to compare water brand preference from datasets 1 and 2 and see how they are different.
 
-Methodology: I am using PROC FREQ statment to obtain most preferred water brand by male versus female in both experiments.
+Methodology: I am using PROC FREQ statment to obtain most preferred water brand by gender in 
+both experiments. Then visualize the findings using a frequency plot.
 ;
-proc freq data=lunsford_raw_sorted order=freq;
-	tables FavBotWatBrand * Gender / nocol norow nopercent; 
-	label FavBotWatBrand='Water Brand';
-	 title 'Favorite Water Brand by Gender in Blind Water Test'; 
-run;
 
-        
-proc freq data=lunsford2_raw_sorted order=freq;
-	tables FavBotWatBrand * Gender / nocol norow nopercent; 
+ods graphics on;
+proc freq data = lunsford_raw_sorted; 
+    tables Gender * FavBotWatBrand / nocol norow nopercent plots (only) = freqplot(twoway = stacked); 
+	label FavBotWatBrand='Water Brand';
+	title 'Favorite Water Brand by Gender in Blind Water Test';
+run; 
+
+proc freq data = lunsford2_raw_sorted; 
+    tables Gender * FavBotWatBrand / nocol norow nopercent plots (only) = freqplot(twoway = stacked); 
 	label FavBotWatBrand='Water Brand';
 	 title 'Favorite Water Brand by Gender in Deceptive Water Test'; 
-run;
+run; 
+ods graphics off;
