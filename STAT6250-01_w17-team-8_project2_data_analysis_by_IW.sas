@@ -41,11 +41,14 @@ directory, if using Windows;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+title1
+"Research Question 1: What is the frequently consumed water type in terms of bottled, tap or filtered?"
+;
+title2
+"Rationale: A frequency table by water type consumed would be a good initial setup for further analysis on these datasets on different water types and students preferences. In addition, this quetsion answers if the community prefers bottled, tap of filtered water."
+;
+
 *
-[Research Question 1] What is the frequently consumed water type in terms of bottled, tap or filtered?
-[Rationale] A frequency table by water type consumed would be a good initial setup 
-for further analysis on these datasets on different water types and students preferences. 
-In addition, this quetsion answers if the community prefers bottled, tap of filtered water.
 Methodology: The file lunsford_analytic was created by horizontally combining lunsford_combined 
 table with Water_PH_Dataset table based on FavBotWatBrand column. We use PROC FREQ method 
 to create a table by age and usually consumed water. Initial frequency table showed frequency for ages 
@@ -71,21 +74,29 @@ proc freq data=lunsford_analytic_file ;
 	title 'Usually Consumed Water Type by Age Group'; 
 run;
 
-
+title;
+footnote;
 
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+title1
+"Research Question 2: What is the water type preference based on each class level?"
+;
+titl2
+"Rationale: This will help to establish Chi-Squared tests to see if water type is different across class level."
+;
+
 *
-[Research Question 2] What is the water type preference based on each class level?
-[Rationale] This will help to establish Chi-Squared tests to see if water type is different across class level.
 Methodology: I am using the PROC TEMPLATE method to change the variable names in 
 the PROC FREQ file. 
 Then I will use PROC FREQ on lunsford2 (deceptive test) data to 
 create a two-way frequency table by academic class and most preferred 
 water preference.
 ;
+
 proc template;                                                                       
    edit Base.Freq.CrossTabFreqs;                                                     
       cellvalue Frequency Expected Deviation CellChiSquare TotalPercent
@@ -122,15 +133,23 @@ proc freq data=lunsford2_raw_sorted;
 	 title 'PROC FREQ displaying Top Ranked Water Brand by Class Year'; 
 run;
 
+title;
+footnote;
 
 
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
-*
-[Research Question 3] What is the top brand type preference based on gender in both experiments?
-[Rationale] This will help to compare water brand preference from datasets 1 and 2 and see how they are different.
 
+title1
+"Research Question 3: What is the top brand type preference based on gender in both experiments?"
+;
+
+title2
+"Rationale: This will help to compare water brand preference from datasets 1 and 2 and see how they are different."
+;
+
+*
 Methodology: I am using PROC FREQ statment to obtain most preferred water brand by gender in 
 both experiments. Then visualize the findings using a frequency plot.
 ;
@@ -148,3 +167,6 @@ proc freq data = lunsford2_raw_sorted;
 	 title 'Favorite Water Brand by Gender in Deceptive Water Test'; 
 run; 
 ods graphics off;
+
+title;
+footnote;
