@@ -258,5 +258,21 @@ proc sort
         OBS
     ;
  run;
+ 
+ proc format;
+  value $UsuallyDrink 
+		'B' = 'Bottled'
+		'F' = 'Filtered'
+        'T' = 'Tap';
+
+run;
+
+proc format;
+  value $First 
+		'A' = "Acquafina"
+		'F' = "Fiji"
+        'S' = "Sam's Choice";
+
+run;
 
 
