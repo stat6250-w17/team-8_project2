@@ -41,8 +41,10 @@ directory, if using Windows;
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
+
+
 title1
-"Research Question 1: What is the frequently consumed water type in terms of bottled, tap or filtered?"
+"Research Question 1: What is the frequently consumed water type - bottled, tap or filtered?"
 ;
 title2
 "Rationale: A frequency table by water type consumed would be a good initial setup for further analysis on these datasets on different water types and students preferences. In addition, this quetsion answers if the community prefers bottled, tap of filtered water."
@@ -57,44 +59,8 @@ for each water type was the same for all ages and limited ages, we only included
 ages 18 through 21 for display.  
 We use PROC FORMAT to change the display of variables in UsuallyDrink column so that 
 the frequency table is easy to interpret.
-;
-
-proc format;
-  value $UsuallyDrink 
-		'B' = 'Bottled'
-		'F' = 'Filtered'
-        	'T' = 'Tap';
-
-run;
-
-proc freq data=lunsford_analytic_file ;
-	where age IN (18,19,20,21);
-	tables Age * UsuallyDrink / nocol norow nopercent;
-	format UsuallyDrink UsuallyDrink;
-	title 'Usually Consumed Water Type by Age Group'; 
-run;
-
-title;
-footnote;
-
-
-*******************************************************************************;
-* Research Question Analysis Starting Point;
-*******************************************************************************;
-
-title1
-"Research Question 2: What is the water type preference based on each class level?"
-;
-title2
-"Rationale: This will help to establish Chi-Squared tests to see if water type is different across class level."
-;
-
-*
-Methodology: I am using the PROC TEMPLATE method to change the variable names in 
-the PROC FREQ file. 
-Then I will use PROC FREQ on lunsford2 (deceptive test) data to 
-create a two-way frequency table by academic class and most preferred 
-water preference.
+We are using the PROC TEMPLATE method to change the variable names in 
+the PROC FREQ file.
 ;
 
 proc template;                                                                       
@@ -123,13 +89,46 @@ proc template;
       rows_header=rowsheader;                                                         
       header tableof;                                                                 
    end;                                                                              
-run; 
+run;
+
+proc freq data=lunsford_analytic_file ;
+	where Age IN (18,19,20,21);
+	tables Age * UsuallyDrink / nocol norow nopercent;
+	format UsuallyDrink $UsuallyDrink.;
+	label Age='Academic Class'
+		UsuallyDrink='Water Type';
+	title 'Usually Consumed Water Type by Age Group'; 
+run;
+
+title;
+footnote;
+
+
+*******************************************************************************;
+* Research Question Analysis Starting Point;
+*******************************************************************************;
+
+title1
+"Research Question 2: What is the water type preference based on each class level?"
+;
+title2
+"Rationale: This will help to establish Chi-Squared tests to see if water type is different across class level."
+;
+
+*
+Methodology: We will use PROC FREQ on lunsford2 (deceptive test) data to 
+create a two-way frequency table by academic class and most preferred 
+water preference.
+;
+
+ 
 
 proc freq data=lunsford2_raw_sorted;
-	where class in ('F','J','SO','SR');
-	tables class * first / nocol norow nopercent;
-	label class='Academic Class'
-		first='Water Brand';
+	where Class in ('F','J','SO','SR');
+	tables Class * first / nocol norow nopercent;
+	format First $First.;
+	label Class='Academic Class'
+		First='Water Brand';
 	 title 'PROC FREQ displaying Top Ranked Water Brand by Class Year'; 
 run;
 
@@ -150,23 +149,34 @@ title2
 ;
 
 *
-Methodology: I am using PROC FREQ statment to obtain most preferred water brand by gender in 
-both experiments. Then visualize the findings using a frequency plot.
+Methodology: We are using PROC FREQ statment to obtain most preferred water brand by gender in 
+both experiments. Then visualize the findings using a SG Plot.
 ;
 
-ods graphics on;
-proc freq data = lunsford_raw_sorted; 
-    tables Gender * FavBotWatBrand / nocol norow nopercent plots (only) = freqplot(twoway = stacked); 
+proc sgplot data = lunsford_raw_sorted; 
+    vbar FavBotWatBrand / Group = Gender; 
 	label FavBotWatBrand='Water Brand';
-	title 'Favorite Water Brand by Gender in Blind Water Test';
+	title 'Distribution of Favorite Water Brand by Gender in Blind Water Test';
 run; 
 
+proc freq data = lunsford_raw_sorted; 
+    tables  FavBotWatBrand * Gender / nocol norow nopercent; 
+	label FavBotWatBrand='Water Brand';
+	 title 'Favorite Water Brand by Gender in Blind Water Test'; 
+run;
+
+proc sgplot data = lunsford2_raw_sorted; 
+    vbar FavBotWatBrand / Group = Gender; 
+	label FavBotWatBrand='Water Brand';
+	title 'Distribution of Favorite Water Brand by Gender in Deceptive Water Test';
+run;
+
 proc freq data = lunsford2_raw_sorted; 
-    tables Gender * FavBotWatBrand / nocol norow nopercent plots (only) = freqplot(twoway = stacked); 
+    tables FavBotWatBrand * Gender / nocol norow nopercent; 
 	label FavBotWatBrand='Water Brand';
 	 title 'Favorite Water Brand by Gender in Deceptive Water Test'; 
 run; 
-ods graphics off;
+
 
 title;
 footnote;
