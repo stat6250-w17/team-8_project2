@@ -51,7 +51,7 @@ title2
 
 ;
 footnote1 
-"Largest No. of frequency will show the most favourite brand"
+"According to the analysis Non of them has a most frequency"
 ;
 footnote2
 "Future analysis will show can show the taste by geographic"
@@ -86,7 +86,7 @@ title2
 "Rationale:This question is showing difference between female& male preference"
 ;
 footnote1
-"it will show that female & male most favourite taste for water"
+"Aquafina is a favorite brand and Followed by Fiji for both gender"
 ;
 footnote2
 "As we can see most attendence was from female so need to separate the favourite men taste as well"
@@ -125,7 +125,7 @@ title2
 if second preference for men is match with 1st preference of women!"
 ;
 footnote1
-"As we can see the second favourite taste is differ for male & Female"
+"Aquafina has a highest frequency for second preference ans followeed by s(sam,s) for female and F(Fiji) for male"
 ;
 footnote2
 " However there is difference preference for two gender but they are close and it shows that their standards are close together."
