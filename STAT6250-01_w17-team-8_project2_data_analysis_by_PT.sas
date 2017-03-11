@@ -6,9 +6,10 @@
 *
 This file uses the following analytic dataset to test several research
 questions about water taste. 
+
 Dataset Name: lunsford_analytic_file created in external file
 STAT6250-01_w17-team-8_project2_data_preparation.sas, which is assumed to be
-in the same directory as this file (sheet2)
+in the same directory
 See included file for dataset propertiess
 ;
 
@@ -67,10 +68,10 @@ Methodology:
 Largest No. of frequency will show the most favourite brand 
 ;
 
-proc freq data=lunsford_combined_sorted;
+proc freq order=freq data=lunsford_combined_sorted;
    tables FavBotWatBrand ;
-run;
-    
+   label FavBotWatBrand="Favorite Bottle Water Brand";
+run;    
 title;
 footnote;
 
@@ -103,8 +104,17 @@ combine it to the  gender, with this code I can even compare the preferance
 base on the gender and the difference may show the difference taste for men 
 and women so I will compare the second fav. in next question.
 ;
-
-proc freq data=lunsford_combined_sorted;
+proc format;
+    value $First_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam'
+    ;
+   run;
+proc freq order=freq data=lunsford_combined_sorted;
    tables Gender*First/ crosslist;
 run;
 
@@ -142,13 +152,18 @@ and compare tow gender second preference. It may shows the differenace taste
 base on gender if  second preference are differ.
 ;
 
-
-proc freq data=lunsford_combined_sorted;
+proc format;
+    value $First_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam'
+    ;
+   run;
+proc freq order=freq data=lunsford_combined_sorted;
    tables Gender*Second/ crosslist;
 run;
 title;
 footnote;
-
-
-
-
