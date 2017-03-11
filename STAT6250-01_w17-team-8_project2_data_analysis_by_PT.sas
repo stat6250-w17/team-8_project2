@@ -104,14 +104,9 @@ combine it to the  gender, with this code I can even compare the preferance
 base on the gender and the difference may show the difference taste for men 
 and women so I will compare the second fav. in next question.
 ;
-proc format lib=library;
+proc format;
     value $First_fmt
     'A'='Aquafina'
-    'B'='Deer Park'
-    'C'='Paree'
-    'D'='Dasani'
-    'F'='Fiji'
-    'S'='Sam'
     ;
    run;
 proc freq data=lunsford_combined_sorted;
