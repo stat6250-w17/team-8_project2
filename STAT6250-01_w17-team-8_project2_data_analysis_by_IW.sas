@@ -48,7 +48,7 @@ title1
 "Research Question 1: What is the frequently consumed water type - bottled, tap or filtered?"
 ;
 title2
-"Rationale: A frequency table by water type consumed would be a good initial setup for further analysis on these datasets on different water types and students preferences. In addition, this quetsion answers if the community prefers bottled, tap of filtered water."
+"Rationale: This helps to further analyze the cost and sustainability of bottle water consumption by the lunsford analytics."
 ;
 
 *
