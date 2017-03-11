@@ -2,14 +2,17 @@
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
-
+*IL: use white space to create paragraphs in comment blocks;
+*IL: only include essential, high-level information here;
 *
 This file uses the following analytic dataset to test several research
 questions about water taste. 
+
 Dataset Name: lunsford_analytic_file created in external file
 STAT6250-01_w17-team-8_project2_data_preparation.sas, which is assumed to be
-in the same directory as this file (sheet2)
-See included file for dataset propertiess
+in the same directory as this file
+
+See included file for dataset properties
 ;
 
 * environmental setup;
@@ -63,12 +66,15 @@ footnote3
 Note:
 This will get information from the column "FavBotWatBrand” from the dataset
 of lunsford and lunsford2.
+
 Methodology: 
 Largest No. of frequency will show the most favourite brand 
 ;
-
-proc freq data=lunsford_combined_sorted;
+*IL: consider using the order=freq option;
+*IL: consider using a label to make variable names more meaningful;
+proc freq order=freq data=lunsford_combined_sorted;
    tables FavBotWatBrand ;
+   label FavBotWatBrand="Favorite Bottled Water Brand";
 run;
     
 title;
@@ -97,15 +103,23 @@ footnote3
 *
 Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
 to the column “Gender” from lunsford and lunsford2.
+
 Methodology: 
 Proc Freq will help me to see the ratio of barnds and with crosslist I can 
 combine it to the  gender, with this code I can even compare the preferance
 base on the gender and the difference may show the difference taste for men 
 and women so I will compare the second fav. in next question.
 ;
-
+*IL: consider a proc format step to create a format for renaming values of the
+     variable First;
+proc format;
+    value $First_fmt
+        'A'='Aquafina'
+    ;
+run;
 proc freq data=lunsford_combined_sorted;
    tables Gender*First/ crosslist;
+   format First $First_fmt.;
 run;
 
 title;
@@ -120,9 +134,10 @@ footnote;
 title1
 "Research Question 3:what is the 2ndmost favorite brand for men?"
 ;
+*IL: string literals shouldn't be wrapped;
+*IL: be careful with typos;
 title2
-"Rationale] This question can be compare to both above questions and we can see 
-if second preference for men is match with 1st preference of women!"
+"Rationale: This question can be compare to both above questions and we can see if second preference for men is match with 1st preference of women!"
 ;
 footnote1
 "Aquafina has a highest frequency for second preference ans followeed by s(sam,s) for female and F(Fiji) for male"
@@ -133,9 +148,11 @@ footnote2
 footnote3
 "Age factor and regional may affaect the result and should consider for next step analysis "
 ;
+*IL: be careful with smart quotes when copying/pasting from Word;
 *
-Note: This compares the column "FavBotWatBrand” from the dataset of lunsford & 
+Note: This compares the column "FavBotWatBrand"� from the dataset of lunsford & 
 to the column “Gender” from lunsford and lunsford2.
+
 Methodology: 
 In this step I can combine the gender and second preference of favourite brand
 and compare tow gender second preference. It may shows the differenace taste
@@ -149,6 +166,4 @@ run;
 title;
 footnote;
 
-
-
-
+*IL: be careful with unnnecessary line breaks at the end of a file;
