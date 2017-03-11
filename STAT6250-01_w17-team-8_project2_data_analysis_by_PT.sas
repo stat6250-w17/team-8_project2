@@ -105,8 +105,8 @@ base on the gender and the difference may show the difference taste for men
 and women so I will compare the second fav. in next question.
 ;
 proc format;
-    value $first_fmt
-    'A'='Aquafina'
+    value First_fmt
+     A='Aquafina'
     'B'='Deer Park'
     'C'='Paree'
     'D'='Dasani'
@@ -114,7 +114,7 @@ proc format;
     'S'='Sam'
     ;
    run;
-proc freq order=freq data=lunsford_combined_sorted;
+proc freq data=lunsford_combined_sorted;
    tables Gender*First/ crosslist;
 run;
 
@@ -162,7 +162,7 @@ proc format;
     'S'='Sam'
     ;
    run;
-proc freq order=freq data=lunsford_combined_sorted;
+proc freq data=lunsford_combined_sorted;
    tables Gender*Second/ crosslist;
 run;
 title;
