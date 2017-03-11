@@ -111,7 +111,7 @@ proc format;
     'C'='Paree'
     'D'='Dasani'
     'F'='Fiji'
-    'S'='Sam
+    'S'='Sam'
     ;
    run;
 proc freq data=lunsford_combined_sorted;
