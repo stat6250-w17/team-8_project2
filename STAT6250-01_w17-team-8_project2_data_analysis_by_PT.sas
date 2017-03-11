@@ -87,7 +87,7 @@ title2
 "Rationale:This question is showing difference between female& male preference"
 ;
 footnote1
-"Aquafina is a favorite brand and Followed by Fiji for both gender"
+"Aquafina is a favorite brand and Followed by Fiji for both gender. 5.85 % differance for female and 1.95% for male"
 ;
 footnote2
 "As we can see most attendence was from female so need to separate the favourite men taste as well"
@@ -105,8 +105,8 @@ base on the gender and the difference may show the difference taste for men
 and women so I will compare the second fav. in next question.
 ;
 proc format;
-    value First_fmt
-     A='Aquafina'
+    value $First_fmt
+    'A'='Aquafina'
     'B'='Deer Park'
     'C'='Paree'
     'D'='Dasani'
@@ -131,11 +131,10 @@ title1
 "Research Question 3:what is the 2ndmost favorite brand for men?"
 ;
 title2
-"Rationale] This question can be compare to both above questions and we can see 
-if second preference for men is match with 1st preference of women!"
+"Rationale] This question can be compare to both above questions and we can see if second preference for men is match with 1st preference of women!"
 ;
 footnote1
-"Aquafina has a highest frequency for second preference ans followeed by s(sam,s) for female and F(Fiji) for male"
+"Aquafina has a highest frequency for second preference ans followeed by s(sam's)(8.29% difference) for female and F(Fiji)(3.9% difference) for male"
 ;
 footnote2
 " However there is difference preference for two gender but they are close and it shows that their standards are close together."
@@ -151,7 +150,6 @@ In this step I can combine the gender and second preference of favourite brand
 and compare tow gender second preference. It may shows the differenace taste
 base on gender if  second preference are differ.
 ;
-
 proc format;
     value $second_fmt
     'A'='Aquafina'
