@@ -107,6 +107,11 @@ and women so I will compare the second fav. in next question.
 proc format;
     value $First_fmt
     'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam
     ;
    run;
 proc freq data=lunsford_combined_sorted;
