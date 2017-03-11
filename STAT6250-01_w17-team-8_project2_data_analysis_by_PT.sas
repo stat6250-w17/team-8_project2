@@ -105,7 +105,7 @@ base on the gender and the difference may show the difference taste for men
 and women so I will compare the second fav. in next question.
 ;
 proc format;
-    value $First_fmt
+    value $first_fmt
     'A'='Aquafina'
     'B'='Deer Park'
     'C'='Paree'
@@ -153,7 +153,7 @@ base on gender if  second preference are differ.
 ;
 
 proc format;
-    value $First_fmt
+    value $second_fmt
     'A'='Aquafina'
     'B'='Deer Park'
     'C'='Paree'
