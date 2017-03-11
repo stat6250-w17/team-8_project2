@@ -258,7 +258,9 @@ proc sort
         OBS
     ;
  run;
- 
+
+* create formats for data analysis;
+
  proc format;
   value $UsuallyDrink 
 		'B' = 'Bottled'
