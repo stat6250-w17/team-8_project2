@@ -277,4 +277,13 @@ proc format;
 
 run;
 
+proc format;
+  value $Fourth 
+		'A' = "Sam's Choice"
+		'B' = "Aquafina"
+        'C' = "Fiji"
+		'D' = "Tap Water";
+
+run;
+
 
