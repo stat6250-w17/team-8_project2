@@ -104,7 +104,7 @@ combine it to the  gender, with this code I can even compare the preferance
 base on the gender and the difference may show the difference taste for men 
 and women so I will compare the second fav. in next question.
 ;
-proc format First;
+proc format;
     value $First_fmt
     'A'='Aquafina'
     'B'='Deer Park'
@@ -151,7 +151,7 @@ In this step I can combine the gender and second preference of favourite brand
 and compare tow gender second preference. It may shows the differenace taste
 base on gender if  second preference are differ.
 ;
-proc format Second;
+proc format;
     value $Second_fmt
     'A'='Aquafina'
     'B'='Deer Park'
