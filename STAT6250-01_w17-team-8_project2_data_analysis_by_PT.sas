@@ -163,7 +163,7 @@ proc format Second;
    run;
 proc freq data=lunsford_combined_sorted;
    tables Gender*Second/ crosslist;
-   format First $Second_fmt.;
+   format Second $Second_fmt.;
 run;
 title;
 footnote;
