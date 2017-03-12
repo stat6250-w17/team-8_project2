@@ -84,7 +84,23 @@ https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xl
 %let inputDataset3Type = XLS;
 %let inputDataset3DSN = Water_PH_Dataset_raw;
 
-
+proc format;
+  value $First_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam';
+  value $Second_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam'
+    ;
+   run;
 
 * load raw datasets over the wire, if they doesn't already exist;
 %macro loadDataIfNotAlreadyAvailable(dsn,url,filetype);
@@ -286,25 +302,6 @@ proc format;
 
 run;
 
-proc format;
-    value $First_fmt
-    'A'='Aquafina'
-    'B'='Deer Park'
-    'C'='Paree'
-    'D'='Dasani'
-    'F'='Fiji'
-    'S'='Sam'
-    ;
-   run;
-   proc format;
-    value $Second_fmt
-    'A'='Aquafina'
-    'B'='Deer Park'
-    'C'='Paree'
-    'D'='Dasani'
-    'F'='Fiji'
-    'S'='Sam'
-    ;
-   run;
+
 
 
