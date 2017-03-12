@@ -83,7 +83,7 @@ proc means
         data=lunsford_analytic_file maxdec=2
     ;
 	class Gender;
-    var pH;
+        var pH;
 	where pH is not missing;
 	title 'pH Level';
 run;
@@ -133,7 +133,7 @@ can say the test is fair, otherwise, we can assume the test is bias.
 
 proc freq data= lunsford_analytic_file;
     table Water_Type;
-	label Water_Type = "Water Type";
+    label Water_Type = "Water Type";
 run;
 
 title;
