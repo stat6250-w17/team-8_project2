@@ -286,4 +286,25 @@ proc format;
 
 run;
 
+proc format;
+    value $First_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam'
+    ;
+   run;
+   proc format;
+    value $Second_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam'
+    ;
+   run;
+
 
