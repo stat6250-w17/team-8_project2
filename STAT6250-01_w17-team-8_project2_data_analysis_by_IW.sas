@@ -162,4 +162,50 @@ footnote;
 *******************************************************************************;
 
 
+title1 justify=left
+"Research Question 3: What is the top ranked water brand based on most consumed water type in Blind Water Test?"
+;
+
+title2 justify=left 
+"Rationale: This relationship shows if student particpant can correctly identify the water they tested based on water they ususally drink.
+In Blind Water experiment, participants were asked to rank their choices after tasting 4 water cups labeled A through D, in which one is filled with tap water and the rest filled with 3 different water brand types. 
+These participants did not know which type of water was in which cup."
+;
+footnote1 justify=left 
+"If the distribution was uniform, we can expect all four top choice water brands to have the same size within and across each bar."
+; 
+footnote2 justify=left
+"It seems that whose who usually prefer to drink tap water did not rate tap water cup as their first choice."
+;
+footnote3 justify=left
+"Water brand Fiji seem to be the most preferred water rank for all students."
+;
+footnote4 justify=left 
+"Further analysis could be done on the top ranked water brand by gender in Blind Water experiment to ascertain the deviation of usually consumed water type and gender on top rank water."
+;
+
+*
+Methodology: We are using SG PLOT statment to create a stacked plot with each 
+color representing the water labels, A through D For readability PROC FORMAT 
+in data analysis file specifies what labels A through D stand for and what 
+UsuallyDrink labels F, B & T stand for. 
+;
+
+
+proc sgplot data = lunsford_raw_sorted; 
+    vbar UsuallyDrink / Group = First; 
+	where UsuallyDrink in ('F','B','T');
+	format UsuallyDrink $UsuallyDrink. 
+		First $Fourth.;
+	label Third='Lowest Ranked Water Brand';
+	title3 height=10pt 
+		color=red 'Graph 1: Most Preferred Water brand by the Water Type That Participant Usually Consumes';
+run;
+ 
+
+
+title;
+footnote;
+
+
 
