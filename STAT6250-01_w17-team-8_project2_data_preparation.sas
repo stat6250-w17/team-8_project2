@@ -100,7 +100,18 @@ proc format;
     'F'='Fiji'
     'S'='Sam'
     ;
-   run;
+  
+  value $UsuallyDrink 
+		'B' = 'Bottled'
+		'F' = 'Filtered'
+        'T' = 'Tap';
+  value $Fourth 
+		'A' = "Sam's Choice"
+		'B' = "Aquafina"
+        'C' = "Fiji"
+		'D' = "Tap Water";
+
+run;
 
 * load raw datasets over the wire, if they doesn't already exist;
 %macro loadDataIfNotAlreadyAvailable(dsn,url,filetype);
@@ -276,32 +287,5 @@ proc sort
  run;
 
 * create formats for data analysis;
-
- proc format;
-  value $UsuallyDrink 
-		'B' = 'Bottled'
-		'F' = 'Filtered'
-        'T' = 'Tap';
-
-run;
-
-proc format;
-  value $First 
-		'A' = "Acquafina"
-		'F' = "Fiji"
-        'S' = "Sam's Choice";
-
-run;
-
-proc format;
-  value $Fourth 
-		'A' = "Sam's Choice"
-		'B' = "Aquafina"
-        'C' = "Fiji"
-		'D' = "Tap Water";
-
-run;
-
-
 
 
