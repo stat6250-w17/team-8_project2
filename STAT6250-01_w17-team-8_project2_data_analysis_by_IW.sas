@@ -124,75 +124,42 @@ footnote;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
-title1
-"Research Question 2: What is the water type preference based on each class level?"
+title1 justify=left
+"Research Question 2: What is the lowest rank water brand based on gender in Deceptive Water Test?"
 ;
-title2
-"Rationale: This will help to establish Chi-Squared tests to see if water type is different across class level."
+
+title2 justify=left 
+"Rationale: This shows if the participants dislike a particular water brand. In Deceptive Water experiment, participants were asked to taste and rank 3 cups of water in terms of preference. Each cup is labeled with 3 different brand names: Fiji, Aquafina, and Sam's Choice but all were actually filled with WalMart drinking water."
+;
+
+footnote1 justify=left 
+"Based on the graph and table output, participants seem to dislike the taste of Sam's Choice the most among other least ranked water brands."
+; 
+
+footnote2 justify=left 
+"Further test should check if having the brand label on the water cup had any effect on participant's preference rank r if this choice is merely random."
 ;
 
 *
-Methodology: We will use PROC FREQ on lunsford2 (deceptive test) data to 
-create a two-way frequency table by academic class and most preferred 
-water preference.
+Methodology: We are using PROC FREQ statment to obtain a frequency table and a plot 
+for least preferred water brand by gender in Deceptive Experiment. 
 ;
 
- 
 
-proc freq data=lunsford2_raw_sorted;
-	where Class in ('F','J','SO','SR');
-	tables Class * first / nocol norow nopercent;
-	format First $First.;
-	label Class='Academic Class'
-		First='Water Brand';
-	 title 'PROC FREQ displaying Top Ranked Water Brand by Class Year'; 
-run;
+proc freq data=lunsford2_raw_sorted ;
+	tables Gender * Third / nocol norow nopercent plots (only) = freqplot(twoway = stacked);
+	format Third $First.;
+	label Third='Lowest Ranked Water Brand';
+	title3 height=10pt 
+		color=red "Table 2: Least Favorite Water Brand by Gender in Deceptive Water Test";
+run; 
+
 
 title;
 footnote;
-
-
 *******************************************************************************;
 * Research Question Analysis Starting Point;
 *******************************************************************************;
 
-title1
-"Research Question 3: What is the top brand type preference based on gender in both experiments?"
-;
-
-title2
-"Rationale: This will help to compare water brand preference from datasets 1 and 2 and see how they are different."
-;
-
-*
-Methodology: We are using PROC FREQ statment to obtain most preferred water brand by gender in 
-both experiments. Then visualize the findings using a SG Plot.
-;
-
-proc sgplot data = lunsford_raw_sorted; 
-    vbar FavBotWatBrand / Group = Gender; 
-	label FavBotWatBrand='Water Brand';
-	title 'Distribution of Favorite Water Brand by Gender in Blind Water Test';
-run; 
-
-proc freq data = lunsford_raw_sorted; 
-    tables  FavBotWatBrand * Gender / nocol norow nopercent; 
-	label FavBotWatBrand='Water Brand';
-	 title 'Favorite Water Brand by Gender in Blind Water Test'; 
-run;
-
-proc sgplot data = lunsford2_raw_sorted; 
-    vbar FavBotWatBrand / Group = Gender; 
-	label FavBotWatBrand='Water Brand';
-	title 'Distribution of Favorite Water Brand by Gender in Deceptive Water Test';
-run;
-
-proc freq data = lunsford2_raw_sorted; 
-    tables FavBotWatBrand * Gender / nocol norow nopercent; 
-	label FavBotWatBrand='Water Brand';
-	 title 'Favorite Water Brand by Gender in Deceptive Water Test'; 
-run; 
 
 
-title;
-footnote;
