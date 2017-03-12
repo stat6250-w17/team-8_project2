@@ -139,7 +139,7 @@ footnote1 justify=left
 "Based on the graph and table output, participants seem to dislike the taste of Sam's Choice the most among other least ranked water brands."
 ; 
 
-footnote2 jsutify=left
+footnote2 justify=left
 "It may be helpful to look at how each brand is distributed in terms of all first,second and third choice ranks as here we are only looking at the distribution of preference for last choice."
 ;
 
