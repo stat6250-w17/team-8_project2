@@ -45,8 +45,8 @@ directory, if using Windows;
 *******************************************************************************;
 
 
-title1
-"Research Question: What is average favor drinking water pH level of the students for the test for female and male respectively?"
+title1 
+"Research Question: What is the average favor drinking water pH level of the students for the test for female and male respectively?"
 ;
 
 title2
@@ -58,15 +58,15 @@ footnote1
 ;
 
 footnote2
-"The ideal pH average result should be about 7, so we can tell that the test group are not fairly selected."
+"The ideal pH average result should be about 7, so we can tell that the test groups are not fairly selected."
 ;
 
 footnote3
-"Further more, the test group profile is skewed where the testers have 102 female and 22 male, further investigation should be performed for the skewed profile and bias group selection."
+"Furthermore, the test group profile is skewed where the testers have 102 female and 22 male, further investigation should be performed for the skewed profile and the bias group selection."
 ;
 
 *
-Note: This compares the column "FavBotWatBrand" from the dataset of lunsford and 
+Note: This compares the column "FavBotWatBrand" from the dataset of lunsford 
 to the column "Brand" from Water_PH_Dataset.
 
 Methodology: 
@@ -80,12 +80,12 @@ otherwise, we can assume the test is bias.
 
 proc means 
         mean
-        data=lunsford_analytic_file 
+        data=lunsford_analytic_file maxdec=2
     ;
 	class Gender;
-        var pH;
+    var pH;
 	where pH is not missing;
-    output out=lunsford_analytic_file_temp;
+	title 'pH Level';
 run;
 
 title;
@@ -98,11 +98,11 @@ footnote;
 
 
 title1
-"Research Question: Which is drinking water type distribution for the students?  Alkaline, Acidic or Regular."
+"Research Question: Which is the drinking water type distribution for the students?  Alkaline, Acidic or Regular."
 ;
 
 title2
-"Rationale: We want to test if the group of students is fairly select, that is, each group should have about the same members, where they prefer Alkaline, Acidic or Regular."
+"Rationale: We want to know if the group of students is fairly selected, that is, each group should have about the same members, where they should prefer Alkaline, Acidic or Regular quite equally."
 ;
 
 footnote1
@@ -110,15 +110,15 @@ footnote1
 ;
 
 footnote2
-"The ideal testers for each group should be the value between 38 and 43, so we can tell the selection of the tested is bias."
+"The ideal testers for each group should be about the same, that is, each group member might be selected as 41 with 5% difference.  From the result, we can tell the selection of the testers is bias, for example, the difference is 39 between Regular and Alkaline."
 ;
 
 footnote3
-"Further analysis should focus on why the tester group has the trend of favoring the Acidic water. Is it related to the geographic location?"
+"Further analysis should be focused on why the tester group has the trend of favoring the Acidic water. Is it related to the geographic location?"
 ;
 
 *
-Note: This compares the column "FavBotWatBrand" from the dataset of lunsford and 
+Note: This compares the column "FavBotWatBrand" from the dataset of lunsford 
 to the column "Brand" from Water_PH_Dataset.
 
 Methodology: 
@@ -133,6 +133,7 @@ can say the test is fair, otherwise, we can assume the test is bias.
 
 proc freq data= lunsford_analytic_file;
     table Water_Type;
+	label Water_Type = "Water Type";
 run;
 
 title;
@@ -148,23 +149,23 @@ title1
 ;
 
 title2
-"Rationale:  We want to know the full profile for the students who participate the test?"
+"Rationale:  We want to know the full profile for the students who participate the test."
 ;
 
 footnote1
-"The SAS shows that 67 testers do not favor a certain bottled water brand, 12 testers favor the bottled water from Sam's Club.  We also have one instance likes the water purchased from store, and one instance like the PAREE water brand."
+"The report shows that 67 testers do not favor certain bottled water brand, 12 testers favor the bottled water from Sam's Club.  We also have one instance from the testers likes the water purchased from store, and one instance likes the PAREE water brand."
 ;
 
 footnote2
-"The ideal tester counts which are qualified for the missing pH values should be limited to the same amount of the testers who favor Alkaline, Acidic or Regular."
+"The count of ideal testers which are qualified for the missing pH values should be limited to the same amount of the testers who favor Alkaline, Acidic or Regular."
 ;
 
 footnote3
-"Further more, we should take a look why 12 testers favor the bottled water from Sam's Club.  Is there a Sam's Club closing to the university?"
+"Furthermore, we should take a closer look why 12 testers favor the bottled water from Sam's Club.  Is there a Sam's Club closer to the university?"
 ;
 
 *
-Note: This compares the column "FavBotWatBrand" from the dataset of lunsford and 
+Note: This compares the column "FavBotWatBrand" from the dataset of lunsford  
 to the column "Brand" from Water_PH_Dataset.
 
 Methodology: 
@@ -175,9 +176,10 @@ info will be avaible in the now joined table.  We will use proc freq for the
 variable Water_Type for the condition where the pH value are not documented.
 ;
 
-proc freq data= lunsford_analytic_file;
+proc freq data= lunsford_analytic_file order=freq;
     table FavBotWatBrand;
-	Where pH is missing;
+    label FavBotWatBrand="Favorite Bottled Water Brand";
+    where pH is missing;
 run;
 
 title;
