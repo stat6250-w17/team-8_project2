@@ -116,7 +116,7 @@ footnote;
 
 
 title1
-"Research Question: Which is the drinking water type distribution for the students?  Alkaline, Acidic or Regular."
+"Research Question: What is the drinking water type distribution for the students?  Acidic, Alkaline and Regular."
 ;
 
 title2
