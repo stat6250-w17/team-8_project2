@@ -10,6 +10,7 @@ questions if the water taste test is a far test based on some criteria
 Dataset Name: lunsford_analytic_file created in external file
 STAT6250-01_w17-team-8_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -50,7 +51,11 @@ title1
 ;
 
 title2
-"Rationale: If the research finds that the pH level is about 7 for both female and male group, we can assume that the test is the fair test so that the test is somehow reasonable."
+"Rationale: If the research finds that the pH level is about 7 for both male and female group, we can assume that the test is the fair test so that the test is somehow reasonable."
+;
+
+title3
+"Table of pH Level"
 ;
 
 footnote1
@@ -87,13 +92,14 @@ proc means
     var pH;
     where pH is not missing;
     output out=lunsford_analytic_file_temp;
-	
 run;
+
 proc sort 
         data=lunsford_analytic_file_temp(where=(_STAT_="MEAN"))
     ;
     by descending pH;
 run;
+
 proc print
         data=lunsford_analytic_file_temp label
     ;
@@ -102,7 +108,6 @@ proc print
     format pH 4.2;
     where Gender is not Null;
     label _FREQ_ = 'Frequency';
-    title 'Table of pH Level';
 run;
 
 
