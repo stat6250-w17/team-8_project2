@@ -2,7 +2,7 @@
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
-
+*IL: use line breaks to create paragraphs in comment blocks;
 *
 This file uses the following analytic dataset to address several research
 questions if the water taste test is a far test based on some criteria
@@ -10,6 +10,7 @@ questions if the water taste test is a far test based on some criteria
 Dataset Name: lunsford_analytic_file created in external file
 STAT6250-01_w17-team-8_project2_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -63,6 +64,7 @@ footnote2 justify=left
 footnote3 justify=left
 "The distribution among age is relatively uniform, except for 20 year old age group which may be a result of data collection errors."
 ;
+*IL: wrap comments at 80 characters;
 *
 Note: Initial frequency was performed for all ages as there were some ages of 2,9, 
 17 & ages above 22. We believe those ages were a data entry error and as such 
@@ -109,13 +111,14 @@ proc template;
 run;
 
 proc freq data=lunsford_analytic_file ;
-	where Age IN (18,19,20,21);
-	tables Age * UsuallyDrink / nocol norow nopercent;
-	format UsuallyDrink $UsuallyDrink.;
-	label Age='Age'
-		UsuallyDrink='Water Type';
-	title3 height=10pt 
-		color=red "Table 1: Usually Consumed Water Type by Age Group";
+    where Age IN (18,19,20,21);
+    tables Age * UsuallyDrink / nocol norow nopercent;
+    format UsuallyDrink $UsuallyDrink.;
+    label Age='Age'
+        UsuallyDrink='Water Type';
+    *IL: don't recommend embed titles;
+    title3 height=10pt 
+        color=red "Table 1: Usually Consumed Water Type by Age Group";
 run;
 
 title;
@@ -155,13 +158,22 @@ to format the raw values in water type ranked as last choice under the variable
 'First'.
 ;
 
-
+*IL: use indentation to make it easier to read intention and to stay within
+     80 character width;
 proc freq data=lunsford2_raw_sorted ;
-	tables Gender * Third / nocol norow nopercent plots (only) = freqplot(twoway = stacked);
-	format Third $First.;
-	label Third='Lowest Ranked Water Brand';
-	title3 height=10pt 
-		color=red "Table 2: Least Favorite Water Brand by Gender in Deceptive Water Test";
+    tables
+        Gender
+        *Third
+        /
+        nocol
+        norow
+        nopercent
+        plots(only) = freqplot(twoway = stacked)
+    ;
+    format Third $First.;
+    label Third='Lowest Ranked Water Brand';
+    title3 height=10pt 
+        color=red "Table 2: Least Favorite Water Brand by Gender in Deceptive Water Test";
 run; 
 
 
@@ -206,12 +218,12 @@ in data preparation file specifies what labels A through D stand for under varia
 
 proc sgplot data = lunsford_raw_sorted; 
     vbar UsuallyDrink / Group = First; 
-	where UsuallyDrink in ('F','B','T');
-	format UsuallyDrink $UsuallyDrink. 
-		First $Fourth.;
-	label Third='Lowest Ranked Water Brand';
-	title3 height=10pt 
-		color=red 'Graph 1: Most Preferred Water brand by the Water Type That Participant Usually Consumes';
+    where UsuallyDrink in ('F','B','T');
+    format UsuallyDrink $UsuallyDrink. 
+        First $Fourth.;
+    label Third='Lowest Ranked Water Brand';
+    title3 height=10pt 
+        color=red 'Graph 1: Most Preferred Water brand by the Water Type That Participant Usually Consumes';
 run;
  
 
