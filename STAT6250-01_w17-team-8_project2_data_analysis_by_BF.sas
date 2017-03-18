@@ -54,7 +54,7 @@ title2
 ;
 
 footnote1
-"We can find that the average pH level for female is 5.88, where pH level for male is 6.05."
+"We can find that the average pH level for male is 6.05, where pH level for female is 5.88." 
 ;
 
 footnote2
@@ -79,14 +79,32 @@ otherwise, we can assume the test is bias.
 ;
 
 proc means 
-        mean
+    mean
+    noprint
         data=lunsford_analytic_file maxdec=2
     ;
-	class Gender;
-        var pH;
-	where pH is not missing;
-	title 'pH Level';
+    class Gender;
+    var pH;
+    where pH is not missing;
+    output out=lunsford_analytic_file_temp;
+	
 run;
+proc sort 
+        data=lunsford_analytic_file_temp(where=(_STAT_="MEAN"))
+    ;
+    by descending pH;
+run;
+proc print
+        data=lunsford_analytic_file_temp label
+    ;
+    id Gender _FREQ_ ;
+    var pH;
+    format pH 4.2;
+    where Gender is not Null;
+    label _FREQ_ = 'Frequency';
+    title 'Table of pH Level';
+run;
+
 
 title;
 footnote;
@@ -110,10 +128,14 @@ footnote1
 ;
 
 footnote2
-"The ideal testers for each group should be about the same, that is, each group member might be selected as 41 with 5% difference.  From the result, we can tell the selection of the testers is bias, for example, the difference is 39 between Regular and Alkaline."
+"The ideal testers for each group should be about the same, that is, each group member might be selected as 41 with 5% difference."  
 ;
 
 footnote3
+"From the result, we can tell the selection of the testers is bias, for example, the difference is 39 between Regular and Alkaline."
+;
+
+footnote4
 "Further analysis should be focused on why the tester group has the trend of favoring the Acidic water. Is it related to the geographic location?"
 ;
 
@@ -145,7 +167,7 @@ footnote;
 *******************************************************************************;
 
 title1
-"Research Question: What is the tester profile if the pH values are not documented?"
+"Research Question: What are the tester profiles if the pH values are not identified regarding their drinking water?"
 ;
 
 title2
