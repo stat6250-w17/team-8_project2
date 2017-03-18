@@ -275,10 +275,17 @@ proc format;
     'S'='Sam'
     ;
   
+ 
   value $UsuallyDrink 
 		'B' = 'Bottled'
 		'F' = 'Filtered'
         'T' = 'Tap';
+	
+  value $First 
+		'A' = "Acquafina"
+		'F' = "Fiji"
+        'S' = "Sam's Choice";
+	
   value $Fourth 
 		'A' = "Sam's Choice"
 		'B' = "Aquafina"
