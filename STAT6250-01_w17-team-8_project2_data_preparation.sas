@@ -84,35 +84,6 @@ https://github.com/stat6250/team-8_project2/blob/master/data/Water_PH_Dataset.xl
 %let inputDataset3Type = XLS;
 %let inputDataset3DSN = Water_PH_Dataset_raw;
 
-proc format;
-  value $First_fmt
-    'A'='Aquafina'
-    'B'='Deer Park'
-    'C'='Paree'
-    'D'='Dasani'
-    'F'='Fiji'
-    'S'='Sam';
-  value $Second_fmt
-    'A'='Aquafina'
-    'B'='Deer Park'
-    'C'='Paree'
-    'D'='Dasani'
-    'F'='Fiji'
-    'S'='Sam'
-    ;
-  
-  value $UsuallyDrink 
-		'B' = 'Bottled'
-		'F' = 'Filtered'
-        'T' = 'Tap';
-  value $Fourth 
-		'A' = "Sam's Choice"
-		'B' = "Aquafina"
-        'C' = "Fiji"
-		'D' = "Tap Water";
-
-run;
-
 * load raw datasets over the wire, if they doesn't already exist;
 %macro loadDataIfNotAlreadyAvailable(dsn,url,filetype);
     %put &=dsn;
@@ -287,5 +258,33 @@ proc sort
  run;
 
 * create formats for data analysis;
+proc format;
+  value $First_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam';
+  value $Second_fmt
+    'A'='Aquafina'
+    'B'='Deer Park'
+    'C'='Paree'
+    'D'='Dasani'
+    'F'='Fiji'
+    'S'='Sam'
+    ;
+  
+  value $UsuallyDrink 
+		'B' = 'Bottled'
+		'F' = 'Filtered'
+        'T' = 'Tap';
+  value $Fourth 
+		'A' = "Sam's Choice"
+		'B' = "Aquafina"
+        'C' = "Fiji"
+		'D' = "Tap Water";
+
+run;
 
 
